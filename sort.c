@@ -6,11 +6,12 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/22 18:06:06 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/23 18:23:29 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "lib.h"
 
 //
 //
@@ -26,15 +27,13 @@ void	ft_sort(va_list arg, t_infos tab)
 	else if (tab.str[tab.i] == '0' || tab.str[tab.i] == '.'
 			|| tab.str[tab.i] == '*' || tab.str[tab.i] == '-')
 	{
-		tab->i = tab->i + 1;
+		tab.i = tab.i + 1;
 		if (tab.str[tab.i] == '.')
-			tab->point = 1;
-		else if (tab.str[tab.i] == '*' && tab.str[tab.i - 1] == '%')
-			tab->firststar = -1;
+			tab.point = 1;
 		else if (tab.str[tab.i] == '0')
-			tab->zero = 1;
+			tab.zero = 1;
 		else if (tab.str[tab.i] == '-')
-			tab->minus = 1;
+			tab.minus = 1;
 		ft_nbsort(arg, tab);
 	}
 	else if (tab.str[tab.i] == 'p' || tab.str[tab.i] == 'd'
@@ -66,12 +65,12 @@ void	ft_nbsort(va_list arg, t_infos tab)
 		i++;
 	nbr = malloc(sizeof(char) * (i + 1));
 	if (nbr == NULL)
-		return (NULL);
+		return ;
 	i = 0;
 	while (ft_isdigit(tab.str[tab.i]))
 	{
 		nbr[i] = tab.str[tab.i];
-		tab->i = tab->i + 1;
+		tab.i = tab.i + 1;
 		i++;
 	}
 	nbr[i] = '\0';
@@ -90,13 +89,24 @@ void	ft_nbsort(va_list arg, t_infos tab)
 //
 void	ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen)
 {
+	if (tab.str[tab.i] == '*')
+		nb = va_arg(arg, unsigned int);
 	if (tab.str[tab.i - (nbrlen + 1)] == '%'
 			|| tab.str[tab.i - (nbrlen + 1)] == '-' )
-		tab->spaces = nb;
+	{
+		tab.i = tab.i + 1;
+		tab.spaces = nb;
+	}
 	else if (tab.str[tab.i - (nbrlen + 1)] == '.')
-		tab->printchar = nb;
+	{
+		tab.i = tab.i + 1;
+		tab.printchar = nb;
+	}
 	else if (tab.str[tab.i - (nbrlen + 1)] == '0')
-		tab->zeros = nb;
+	{
+		tab.i = tab.i + 1;
+		tab.zeros = nb;
+	}
 	ft_sort(arg, tab);
 }
 
@@ -110,20 +120,19 @@ void	ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen)
 //
 void	ft_sort_result(va_list arg, t_infos tab)
 {
-	if (tab.str[tab.i] == 'c')
-		ft_c(va_arg(arg, char), tab);
-	else if (tab.str[tab.i] == 's')
-		ft_s(va_arg(arg, char *), tab);
-	else if (tab.str[tab.i] == 'd')
-		ft_d(va_arg(arg, int), tab);
-	else if (tab.str[tab.i] == 'u')
-		ft_u(va_arg(arg, unsigned int), tab);
-	else if (tab.str[tab.i] == 'i')
-		ft_i(va_arg(arg, int), tab);
-	else if (tab.str[tab.i] == 'x')
-		ft_x(va_arg(arg, unsigned int), tab);
-	else if (tab.str[tab.i] == 'X')
-		ft_X(va_arg(arg, unsigned int), tab);
-	else if (tab.str[tab.i] == '%')
+	if (tab.str[tab.i] == 'c' || tab.str[tab.i] == 's') 
+		ft_c_s(arg, tab);
+	else if (tab.str[tab.i] == 'd' || tab.str[tab.i] == 'u'
+			|| tab.str[tab.i] == 'i' || tab.str[tab.i] == 'x'
+			|| tab.str[tab.i] == 'X')
+		ft_d_u_i_x_X(va_arg(arg, int), tab);
+	if(tab.str[tab.i] == '%')
+	{
+		tab.i = tab.i + 1;
 		ft_putchar_fd('%', 1);
+	}
+}
+
+void	ft_c_s(va_list arg, t_infos tab)
+{	
 }
