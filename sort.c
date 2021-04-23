@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/23 19:22:13 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/23 21:37:17 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	ft_sort(va_list arg, t_infos tab)
 			tab.minus = 1;
 		ft_nbsort(arg, tab);
 	}
-	else if (tab.str[tab.i] == 'p' || tab.str[tab.i] == 'd'
+	else if ((tab.str[tab.i] == 'p' || tab.str[tab.i] == 'd'
 			|| tab.str[tab.i] == 'c' || tab.str[tab.i] == 'X'
 			|| tab.str[tab.i] == 'x' || tab.str[tab.i] == 's'
 			|| tab.str[tab.i] == '%' || tab.str[tab.i] == 'u'
-			|| tab.str[tab.i] == 'i')
+			|| tab.str[tab.i] == 'i') && tab.flag == 0)
 	{
 		tab.flag = tab.str[tab.i];
 		ft_sort_result(arg, tab);
@@ -62,6 +62,7 @@ void	ft_nbsort(va_list arg, t_infos tab)
 	unsigned int	nb;
 	int				i;
 
+	i = tab.i;
 	if (tab.str[tab.i] == '*')
 		ft_nbend(arg, tab, va_arg(arg, int), 0);
 	while (ft_isdigit(tab.str[i]))
@@ -73,11 +74,12 @@ void	ft_nbsort(va_list arg, t_infos tab)
 	while (ft_isdigit(tab.str[tab.i]))
 	{
 		nbr[i] = tab.str[tab.i];
+		printf("passe tab.i = %d\n", tab.i);
 		tab.i = tab.i + 1;
 		i++;
 	}
 	nbr[i] = '\0';
-	nb = ft_uitoa(nbr);
+	nb = ft_uatoi(nbr);
 	ft_nbend(arg, tab, nb, ft_strlen(nbr));
 }
 
@@ -97,7 +99,7 @@ void	ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen)
 	if (tab.str[tab.i - (nbrlen + 1)] == '%'
 			|| tab.str[tab.i - (nbrlen + 1)] == '-' )
 	{
-		tab.i = tab.i + 1;
+		printf("passe tab.i = %d\n", tab.i);
 		tab.spaces = nb;
 	}
 	else if (tab.str[tab.i - (nbrlen + 1)] == '.')
@@ -125,10 +127,10 @@ void	ft_sort_result(va_list arg, t_infos tab)
 {
 	if (tab.str[tab.i] == 'c' || tab.str[tab.i] == 's') 
 		ft_c_s(arg, tab);
-	else if (tab.str[tab.i] == 'd' || tab.str[tab.i] == 'u'
-			|| tab.str[tab.i] == 'i' || tab.str[tab.i] == 'x'
-			|| tab.str[tab.i] == 'X')
-		ft_d_u_i_x_X(va_arg(arg, int), tab);
+//	else if (tab.str[tab.i] == 'd' || tab.str[tab.i] == 'u'
+//			|| tab.str[tab.i] == 'i' || tab.str[tab.i] == 'x'
+//			|| tab.str[tab.i] == 'X')
+//		ft_d_u_i_x_X(va_arg(arg, int), tab);
 	if(tab.str[tab.i] == '%')
 	{
 		tab.i = tab.i + 1;
@@ -141,13 +143,21 @@ void	ft_c_s(va_list arg, t_infos tab)
 	if (tab.flag == 'c')
 	{
 		if (tab.minus)
-			ft_putchar_fd(va_arg(arg, char), 1);
+		{
+			tab.i = tab.i + 1;
+			ft_putchar_fd(va_arg(arg, int), 1);
+		}
 		while (tab.spaces > 1)
 		{
 			ft_putchar_fd(' ', 1);
 			tab.spaces = tab.spaces - 1; 
 		}
 		if (!(tab.minus))
-			ft_putchar_fd(va_arg(arg, char), 1);
+		{
+			tab.i = tab.i + 1;
+			printf("PASSE tab.i = %d, tab.str[tab.i] = %c\n", tab.i, tab.str[tab.i]);
+			ft_putchar_fd(va_arg(arg, int), 1);
+		}
+		ft_parcour(arg, tab);
 	}
 }
