@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/23 18:23:29 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/23 19:22:13 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void	ft_sort(va_list arg, t_infos tab)
 			|| tab.str[tab.i] == 'x' || tab.str[tab.i] == 's'
 			|| tab.str[tab.i] == '%' || tab.str[tab.i] == 'u'
 			|| tab.str[tab.i] == 'i')
+	{
+		tab.flag = tab.str[tab.i];
 		ft_sort_result(arg, tab);
+	}
 }
 
 //
@@ -134,5 +137,17 @@ void	ft_sort_result(va_list arg, t_infos tab)
 }
 
 void	ft_c_s(va_list arg, t_infos tab)
-{	
+{
+	if (tab.flag == 'c')
+	{
+		if (tab.minus)
+			ft_putchar_fd(va_arg(arg, char), 1);
+		while (tab.spaces > 1)
+		{
+			ft_putchar_fd(' ', 1);
+			tab.spaces = tab.spaces - 1; 
+		}
+		if (!(tab.minus))
+			ft_putchar_fd(va_arg(arg, char), 1);
+	}
 }
