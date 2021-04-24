@@ -6,13 +6,13 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:06:56 by trouger           #+#    #+#             */
-/*   Updated: 2021/03/23 11:06:57 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/24 17:28:31 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
 	size_t	i;
 

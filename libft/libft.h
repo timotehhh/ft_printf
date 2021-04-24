@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:08:20 by trouger           #+#    #+#             */
-/*   Updated: 2021/03/23 11:08:21 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/24 17:28:53 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 char			**ft_split(char const *str, char c);
 char			*ft_strchr(const char *str, int c);
-size_t			ft_strlen(const char *str);
+int				ft_strlen(const char *str);
 size_t			ft_strlcpy(char *dest, const char *src, size_t len);
 char			*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 int				ft_strncmp(const char *s1, const char *s2, size_t n);

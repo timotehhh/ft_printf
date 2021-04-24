@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/24 17:04:54 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/24 17:42:52 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,7 @@ void	ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen)
 			|| tab.str[*(tab.i) - (nbrlen + 1)] == '-' )
 		tab.spaces = nb;
 	else if (tab.str[*(tab.i) - (nbrlen + 1)] == '.')
-	{
-		*(tab.i) = *(tab.i) + 1;
 		tab.printchar = nb;
-	}
 	else if (tab.str[*(tab.i) - (nbrlen + 1)] == '0')
 	{
 		*(tab.i) = *(tab.i) + 1;
@@ -122,6 +119,8 @@ void	ft_sort_result(va_list arg, t_infos tab)
 {
 	if (tab.str[*(tab.i)] == 'c') 
 		ft_print_c(arg, tab);
+	if (tab.str[*(tab.i)] == 's')
+		ft_print_s(arg, tab);
 //	else if (tab.str[tab.i] == 'd' || tab.str[tab.i] == 'u'
 //			|| tab.str[tab.i] == 'i' || tab.str[tab.i] == 'x'
 //			|| tab.str[tab.i] == 'X')
