@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:56:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/23 20:54:48 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/24 15:58:14 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ typedef struct		s_infos
 	int				zeros;
 	int				printchar;
 	int				spaces;
-	int				i;
+	int				null;
+	int				*i;
 	int				i_toprint;
-	char			flag;
+	char			*flag;
 	char			*str;
 	char			*str_toprint;
 }					t_infos;
