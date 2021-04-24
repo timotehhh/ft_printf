@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:56:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/24 15:58:14 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/24 16:34:06 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				ft_printf(const char *format, ...);
 t_infos			ft_initialize(void);
 void			ft_parcour(va_list arg, t_infos tab);
 unsigned int	ft_uatoi(char *nbr);
-void			ft_c_s(va_list arg, t_infos tab);
+void			ft_print_c(va_list arg, t_infos tab);
 void			ft_sort(va_list arg, t_infos tab);
 void			ft_nbsort(va_list arg, t_infos tab);
 void			ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen);

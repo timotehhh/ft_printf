@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/24 16:29:29 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/24 17:04:54 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void	ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen)
 //
 void	ft_sort_result(va_list arg, t_infos tab)
 {
-	if (tab.str[*(tab.i)] == 'c' || tab.str[*(tab.i)] == 's') 
-		ft_c_s(arg, tab);
+	if (tab.str[*(tab.i)] == 'c') 
+		ft_print_c(arg, tab);
 //	else if (tab.str[tab.i] == 'd' || tab.str[tab.i] == 'u'
 //			|| tab.str[tab.i] == 'i' || tab.str[tab.i] == 'x'
 //			|| tab.str[tab.i] == 'X')
@@ -130,27 +130,5 @@ void	ft_sort_result(va_list arg, t_infos tab)
 	{
 		*(tab.i) = *(tab.i) + 1;
 		ft_putchar_fd('%', 1);
-	}
-}
-
-void	ft_c_s(va_list arg, t_infos tab)
-{
-	if (*(tab.flag) == 'c')
-	{
-		if (tab.minus)
-		{
-			*(tab.i) = *(tab.i) + 1;
-			ft_putchar_fd(va_arg(arg, int), 1);
-		}
-		while (tab.spaces > 1)
-		{
-			ft_putchar_fd(' ', 1);
-			tab.spaces = tab.spaces - 1; 
-		}
-		if (!(tab.minus))
-		{
-			*(tab.i) = *(tab.i) + 1;
-			ft_putchar_fd(va_arg(arg, int), 1);
-		}
 	}
 }
