@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 10:10:11 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/24 18:45:17 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/25 15:27:42 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	ft_printf("%.10d-\n", 5);
+	ft_printf("%-*d-\n", 4, 56);
+	printf("%-*i-\n", 4, 56);
 	return (0);
 }

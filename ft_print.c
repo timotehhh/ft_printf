@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/24 18:48:43 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/25 15:21:40 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,70 @@ void	ft_print_d(va_list arg, t_infos tab)
 	char	*nb;
 
 	nb = ft_itoa(va_arg(arg, int));
-	if (tab.minus)
+	if (tab.minus && !(tab.point))
 	{
-		*(tab.i) = *(tab.i) + 1;
 		ft_putstr_fd(nb, 1);
-	}
-	if (tab.spaces > ft_strlen(nb))
-	{
 		while (tab.spaces > ft_strlen(nb))
 		{
 			ft_putchar_fd(' ', 1);
 			tab.spaces = tab.spaces - 1;
 		}
 	}
-	else if (tab.zeros > ft_strlen(nb) && tab.minus == 0 && tab.point == 0)
+	else if (tab.point)
+		ft_print_d2(tab, nb);
+	else if (tab.zero && !(tab.point) && !(tab.minus))
 	{
 		while (tab.zeros > ft_strlen(nb))
 		{
 			ft_putchar_fd('0', 1);
 			tab.zeros = tab.zeros - 1;
 		}
+		ft_putstr_fd(nb, 1);
 	}
-	if (!(tab.minus))
+	else if (tab.spaces > ft_strlen(nb) && !(tab.minus) && !(tab.point))
 	{
-		*(tab.i) = *(tab.i) + 1;
+		while (tab.spaces > ft_strlen(nb))
+		{
+			ft_putchar_fd(' ', 1);
+			tab.spaces = tab.spaces - 1;
+		}
+		ft_putstr_fd(nb, 1);
+	}
+	else
+		ft_putstr_fd(nb, 1);
+	*(tab.i) += 1;
+}
+
+void	ft_print_d2(t_infos tab, char *nb)
+{
+	if (tab.minus)
+	{
+		tab.spaces = tab.spaces - tab.printchar + 1;
+		while (tab.printchar > ft_strlen(nb))
+		{
+			ft_putchar_fd('0', 1);
+			tab.printchar = tab.printchar - 1;
+		}
+		ft_putstr_fd(nb, 1);
+		while (tab.spaces > ft_strlen(nb))
+		{
+			ft_putchar_fd(' ', 1);
+			tab.spaces = tab.spaces - 1;
+		}
+	}
+	else
+	{
+		tab.spaces = tab.spaces - tab.printchar + 1;
+		while (tab.spaces > ft_strlen(nb))
+		{
+			ft_putchar_fd(' ', 1);
+			tab.spaces = tab.spaces - 1;
+		}
+		while (tab.printchar > ft_strlen(nb))
+		{
+			ft_putchar_fd('0', 1);
+			tab.printchar = tab.printchar - 1;
+		}
 		ft_putstr_fd(nb, 1);
 	}
 }
