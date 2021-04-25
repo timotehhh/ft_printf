@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/25 15:21:40 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/25 19:01:08 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,18 @@ void	ft_print_s(va_list arg, t_infos tab)
 	}
 }
 
-void	ft_print_d(va_list arg, t_infos tab)
+void	ft_print_int(va_list arg, t_infos tab)
 {
 	char	*nb;
 
-	nb = ft_itoa(va_arg(arg, int));
+	if (*(tab.flag) == 'd' || *(tab.flag) == 'i')
+		nb = ft_itoa(va_arg(arg, int));
+	else if (*(tab.flag) == 'x')
+		nb = ft_convert_base(va_arg(arg, int), "0123456789abcdef");
+	else if (*(tab.flag) == 'X')
+		nb = ft_convert_base(va_arg(arg, int), "0123456789ABCDEF");
+	else if (*(tab.flag) == 'u')
+		nb = ft_uitoa(va_arg(arg, unsigned int));
 	if (tab.minus && !(tab.point))
 	{
 		ft_putstr_fd(nb, 1);
@@ -99,14 +106,14 @@ void	ft_print_d2(t_infos tab, char *nb)
 {
 	if (tab.minus)
 	{
-		tab.spaces = tab.spaces - tab.printchar + 1;
+		tab.spaces = tab.spaces - tab.printchar;
 		while (tab.printchar > ft_strlen(nb))
 		{
 			ft_putchar_fd('0', 1);
 			tab.printchar = tab.printchar - 1;
 		}
 		ft_putstr_fd(nb, 1);
-		while (tab.spaces > ft_strlen(nb))
+		while (tab.spaces)
 		{
 			ft_putchar_fd(' ', 1);
 			tab.spaces = tab.spaces - 1;
@@ -114,8 +121,8 @@ void	ft_print_d2(t_infos tab, char *nb)
 	}
 	else
 	{
-		tab.spaces = tab.spaces - tab.printchar + 1;
-		while (tab.spaces > ft_strlen(nb))
+		tab.spaces = tab.spaces - tab.printchar;
+		while (tab.spaces)
 		{
 			ft_putchar_fd(' ', 1);
 			tab.spaces = tab.spaces - 1;
