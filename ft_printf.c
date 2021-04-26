@@ -19,7 +19,7 @@ void	ft_parcour(va_list arg, t_infos tab)
 	{
 		if (tab.str[*(tab.i)] == '%')
 		{
-			*(tab.i) = *(tab.i) + 1;	
+			*(tab.i) = *(tab.i) + 1;
 			ft_sort(arg, tab);
 			*(tab.flag) = 0;
 		}
@@ -67,13 +67,4 @@ int		ft_printf(const char *format, ...)
 	ft_parcour(arg, tab);
 	va_end(arg);
 	return (1);
-}
-
-int main()
-{
-	char p = 10;
-
-	ft_printf("%-*p-\n", 14, &p);
-	printf("%-*p-\n", 14, &p);
-	return (0);
 }

@@ -60,16 +60,7 @@ void	ft_print_int(va_list arg, t_infos tab)
 {
 	char	*nb;
 
-	if (*(tab.flag) == 'd' || *(tab.flag) == 'i')
-		nb = ft_itoa(va_arg(arg, int));
-	else if (*(tab.flag) == 'x')
-		nb = ft_convert_base(va_arg(arg, int), "0123456789abcdef", tab);
-	else if (*(tab.flag) == 'X')
-		nb = ft_convert_base(va_arg(arg, int), "0123456789ABCDEF", tab);
-	else if (*(tab.flag) == 'u')
-		nb = ft_uitoa(va_arg(arg, unsigned int));
-	else if (*(tab.flag) == 'p')
-		nb = ft_convert_base((unsigned long)va_arg(arg, void *), "0123456789abcdef", tab);
+	nb = ft_initialize_print(arg, tab);
 	if (tab.minus && !(tab.point))
 	{
 		ft_putstr_fd(nb, 1);
@@ -104,7 +95,7 @@ void	ft_print_int(va_list arg, t_infos tab)
 	*(tab.i) += 1;
 }
 
-void	ft_print_d2(t_infos tab, char *nb)
+void	ft_print_int2(t_infos tab, char *nb)
 {
 	if (tab.minus)
 	{

@@ -13,7 +13,7 @@
 #include "lib.h"
 #include <stdio.h>
 
-int		ft_find_size(unsigned int nb)
+int				ft_find_size(unsigned int nb)
 {
 	int i;
 
@@ -26,9 +26,9 @@ int		ft_find_size(unsigned int nb)
 	return (i);
 }
 
-char*	ft_uitoa(unsigned int nb)
+char			*ft_uitoa(unsigned int nb)
 {
-	char*	nbr;
+	char	*nbr;
 	int		i;
 
 	i = ft_find_size(nb);

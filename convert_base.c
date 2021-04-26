@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   convert_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouger </var/mail/trouger>                +#+  +:+       +#+        */
+/*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:49:38 by trouger           #+#    #+#             */
 /*   Updated: 2021/04/26 11:16:21 by trouger          ###   ########.fr       */
