@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/25 19:01:08 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/26 10:57:44 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,13 @@ void	ft_print_int(va_list arg, t_infos tab)
 	if (*(tab.flag) == 'd' || *(tab.flag) == 'i')
 		nb = ft_itoa(va_arg(arg, int));
 	else if (*(tab.flag) == 'x')
-		nb = ft_convert_base(va_arg(arg, int), "0123456789abcdef");
+		nb = ft_convert_base(va_arg(arg, int), "0123456789abcdef", tab);
 	else if (*(tab.flag) == 'X')
-		nb = ft_convert_base(va_arg(arg, int), "0123456789ABCDEF");
+		nb = ft_convert_base(va_arg(arg, int), "0123456789ABCDEF", tab);
 	else if (*(tab.flag) == 'u')
 		nb = ft_uitoa(va_arg(arg, unsigned int));
+	else if (*(tab.flag) == 'p')
+		nb = ft_convert_base((unsigned long)va_arg(arg, void *), "0123456789abcdef", tab);
 	if (tab.minus && !(tab.point))
 	{
 		ft_putstr_fd(nb, 1);
