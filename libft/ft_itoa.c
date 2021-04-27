@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:03:48 by trouger           #+#    #+#             */
-/*   Updated: 2021/03/23 15:47:03 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 15:16:17 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libftprintf.h"
 
 static int	ft_find_size(int nb)
 {

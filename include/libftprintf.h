@@ -6,15 +6,16 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:56:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/26 21:30:40 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 15:22:53 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LIB_H
 # define FT_LIB_H
 
-# include "libft/libft.h"
+# include <stdlib.h>
 # include <stdarg.h>
+# include <unistd.h>
 
 typedef struct		s_infos
 {
@@ -32,6 +33,13 @@ typedef struct		s_infos
 	char			*str_toprint;
 }					t_infos;
 
+char				*ft_itoa(int n);
+int					ft_isdigit(int c);
+void				ft_putchar_fd(char c, int fd);
+void				ft_putstr_fd(char *s, int fd);
+void				ft_putnbr_fd(int n, int fd);
+int					ft_strlen(const char *str);
+char				*ft_strdup(const char *s);
 int					ft_printf(const char *format, ...);
 t_infos				ft_initialize(void);
 void				ft_parcour(va_list arg, t_infos tab);

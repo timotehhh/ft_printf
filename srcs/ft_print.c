@@ -6,12 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/26 21:08:05 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 15:19:14 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
-#include <stdio.h>
+#include "../include/libftprintf.h"
 
 void	ft_print_c(va_list arg, t_infos tab)
 {

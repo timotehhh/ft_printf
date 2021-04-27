@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:03:34 by trouger           #+#    #+#             */
-/*   Updated: 2021/03/23 15:45:03 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 15:15:57 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libftprintf.h"
 
 int		ft_isdigit(int c)
 {
