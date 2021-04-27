@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 15:19:14 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 21:51:56 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 void	ft_print_c(va_list arg, t_infos tab)
 {
@@ -53,6 +53,7 @@ void	ft_print_s(va_list arg, t_infos tab)
 		*(tab.i) = *(tab.i) + 1;
 		ft_putstr_fd(tab.str_toprint, 1);
 	}
+	free(tab.str_toprint);
 }
 
 void	ft_print_int(va_list arg, t_infos tab)
@@ -74,6 +75,7 @@ void	ft_print_int(va_list arg, t_infos tab)
 	else
 		ft_print_int3(tab, nb);
 	*(tab.i) += 1;
+	free(nb);
 }
 
 void	ft_print_int2(t_infos tab, char *nb)

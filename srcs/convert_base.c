@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:49:38 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 15:17:32 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 21:44:25 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 int		ft_find_len(unsigned long nb, char *base, t_infos tab)
 {

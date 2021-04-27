@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 10:10:11 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 15:58:08 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 21:49:59 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/libftprintf.h"
+#include "./include/ft_printf.h"
 
 void	ft_parcour(va_list arg, t_infos tab)
 {
@@ -65,5 +65,13 @@ int		ft_printf(const char *format, ...)
 	va_start(arg, format);
 	ft_parcour(arg, tab);
 	va_end(arg);
+	free(tab.i);
+	tab.i = NULL;
+	free(tab.flag);
+	tab.flag = NULL;
+	free(tab.str);
+	tab.str = NULL;
+	free(tab.str_toprint);
+	tab.str_toprint = NULL;
 	return (1);
 }

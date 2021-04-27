@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:05:42 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 15:16:35 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 21:43:01 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

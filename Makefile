@@ -22,9 +22,6 @@ $(NAME):	${OBJS}
 
 all:		${NAME}
 
-bonus:		${OBJS_B}
-			${LIB} ${NAME} ${OBJS_B}
-
 clean:
 			${RM} ${OBJS} ${OBJS_B}
 

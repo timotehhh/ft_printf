@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:06:56 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 15:18:53 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 21:44:01 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 int	ft_strlen(const char *str)
 {

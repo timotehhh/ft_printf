@@ -6,11 +6,11 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:06:18 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 15:17:57 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/27 21:43:47 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 
 char	*ft_strdup(const char *s)
 {
