@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/28 19:03:29 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/28 22:42:07 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ void	ft_print_int(va_list arg, t_infos tab)
 	char	*nb;
 
 	nb = ft_initialize_print(arg, tab);
+	if ((*(tab.flag) == 'd' || *(tab.flag) == 'i') && tab.point
+			&& !(tab.printchar) && nb[0] == '0')
+		nb[0] = '\0';
+	if (tab.zero && (tab.minus || tab.point) && !(tab.spaces))
+		tab.spaces = tab.zeros;
 	if (tab.minus && !(tab.point))
 	{
 		if (*(tab.neg))
@@ -109,7 +114,7 @@ void	ft_print_int2(t_infos tab, char *nb)
 			tab.printchar = tab.printchar - 1;
 		}
 		ft_putstr_fd(nb, 1);
-		while (tab.spaces)
+		while (tab.spaces > 0)
 		{
 			ft_putchar_fd(' ', 1);
 			tab.spaces = tab.spaces - 1;

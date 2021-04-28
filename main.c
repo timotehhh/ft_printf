@@ -3,8 +3,8 @@
 
 int main()
 {
-	int a = -10;
+	int a = 34;
 
-	ft_printf("%d-\n", a);
+	printf("%-8.d-\n", a);
 	return (0);
 }
