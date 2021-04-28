@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 10:10:11 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 21:49:59 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/28 18:27:04 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ t_infos	ft_initialize(void)
 		tab.null = 1;
 	*(tab.i) = 0;
 	tab.i_toprint = 0;
+	tab.neg = malloc(sizeof(int) * 1);
+	if (tab.neg == NULL)
+		tab.null = 1;
+	*(tab.neg) = 0;
 	tab.flag = malloc(sizeof(char) * 1);
 	if (tab.flag == NULL)
 		tab.null = 1;

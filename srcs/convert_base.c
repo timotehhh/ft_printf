@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:49:38 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 21:44:25 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/28 17:06:06 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,8 @@ int		ft_find_len(unsigned long nb, char *base, t_infos tab)
 	return (i);
 }
 
-int		ft_fill_p(unsigned long nb, char *result)
+int		ft_fill_p(char *result)
 {
-	if (nb)
-	{
-		result[0] = '0';
-		result[1] = 'x';
-		result[2] = '7';
-		result[3] = 'f';
-		result[4] = 'f';
-		return (5);
-	}
 	result[0] = '0';
 	result[1] = 'x';
 	return (2);
@@ -60,7 +51,7 @@ char	*ft_convert_base(unsigned long nb, char *base, t_infos tab)
 		return (NULL);
 	result[i] = '\0';
 	if (*(tab.flag) == 'p')
-		stop = ft_fill_p(nb, result);
+		stop = ft_fill_p(result);
 	while (--i >= stop)
 	{
 		result[i] = base[nb % ft_strlen(base)];

@@ -3,6 +3,8 @@
 
 int main()
 {
-	ft_printf("%05%-\n");
+	int a = -10;
+
+	ft_printf("%d-\n", a);
 	return (0);
 }
