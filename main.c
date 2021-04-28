@@ -3,6 +3,6 @@
 
 int main()
 {
-	ft_printf("%*.4s--  --%.4s-\n", 10, "abcde", "abcdefg");
+	ft_printf("%05%-\n");
 	return (0);
 }

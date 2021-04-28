@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 21:51:56 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/28 14:30:26 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,33 @@
 
 void	ft_print_c(va_list arg, t_infos tab)
 {
+	char	c;
+	if (*(tab.flag) == 'c')
+		c = va_arg(arg, int);
+	else
+		c = '%';
 	if (tab.minus)
 	{
 		*(tab.i) = *(tab.i) + 1;
-		ft_putchar_fd(va_arg(arg, int), 1);
+		ft_putchar_fd(c, 1);
 	}
-	while (tab.spaces > 1)
+	while (tab.spaces > 1 || tab.zeros > 1)
 	{
-		ft_putchar_fd(' ', 1);
-		tab.spaces = tab.spaces - 1;
+		if (tab.zeros > 1 && c == '%')
+		{
+			ft_putchar_fd('0', 1);
+			tab.zeros = tab.zeros - 1;
+		}
+		else
+		{
+			ft_putchar_fd(' ', 1);
+			tab.spaces = tab.spaces - 1;
+		}
 	}
 	if (!(tab.minus))
 	{
 		*(tab.i) = *(tab.i) + 1;
-		ft_putchar_fd(va_arg(arg, int), 1);
+		ft_putchar_fd(c, 1);
 	}
 }
 
