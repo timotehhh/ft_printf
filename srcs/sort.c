@@ -18,7 +18,7 @@ void	ft_sort(va_list arg, t_infos tab)
 		ft_nbsort(arg, tab);
 	else if ((tab.str[*(tab.i)] == '0' || tab.str[*(tab.i)] == '.'
 				|| tab.str[*(tab.i)] == '*' || tab.str[*(tab.i)] == '-')
-			&& *(tab.flag) == 0)
+			&& *(tab.flag) == 'w')
 	{
 		if (tab.str[*(tab.i)] == '.')
 			tab.point = 1;
@@ -33,7 +33,7 @@ void	ft_sort(va_list arg, t_infos tab)
 			|| tab.str[*(tab.i)] == 'c' || tab.str[*(tab.i)] == 'X'
 			|| tab.str[*(tab.i)] == 'x' || tab.str[*(tab.i)] == 's'
 			|| tab.str[*(tab.i)] == '%' || tab.str[*(tab.i)] == 'u'
-			|| tab.str[*(tab.i)] == 'i') && *(tab.flag) == 0)
+			|| tab.str[*(tab.i)] == 'i') && *(tab.flag) == 'w')
 	{
 		*(tab.flag) = tab.str[*(tab.i)];
 		ft_sort_result(arg, tab);
@@ -63,7 +63,9 @@ void	ft_nbsort(va_list arg, t_infos tab)
 	}
 	nbr[i] = '\0';
 	nb = ft_uatoi(nbr);
-	ft_nbend(arg, tab, nb, ft_strlen(nbr));
+	i = ft_strlen(nbr);
+	free(nbr);
+	ft_nbend(arg, tab, nb, i);
 }
 
 void	ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen)

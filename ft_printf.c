@@ -20,7 +20,7 @@ void	ft_parcour(va_list arg, t_infos tab)
 		{
 			*(tab.i) = *(tab.i) + 1;
 			ft_sort(arg, tab);
-			*(tab.flag) = 0;
+			*(tab.flag) = 'w';
 		}
 		else
 		{
@@ -38,6 +38,7 @@ t_infos	ft_initialize(void)
 	tab.zeros = 0;
 	tab.minus = 0;
 	tab.point = 0;
+	tab.null = 0;
 	tab.printchar = 0;
 	tab.spaces = 0;
 	tab.i = malloc(sizeof(int) * 1);
@@ -48,6 +49,7 @@ t_infos	ft_initialize(void)
 	tab.flag = malloc(sizeof(char) * 1);
 	if (tab.flag == NULL)
 		tab.null = 1;
+	*(tab.flag) = 'w';
 	tab.str = NULL;
 	tab.str_toprint = NULL;
 	return (tab);
@@ -66,12 +68,8 @@ int		ft_printf(const char *format, ...)
 	ft_parcour(arg, tab);
 	va_end(arg);
 	free(tab.i);
-	tab.i = NULL;
 	free(tab.flag);
-	tab.flag = NULL;
 	free(tab.str);
-	tab.str = NULL;
 	free(tab.str_toprint);
-	tab.str_toprint = NULL;
 	return (1);
 }

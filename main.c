@@ -1,10 +1,8 @@
 
-#include "./include/libftprintf.h"
+#include "./include/ft_printf.h"
 
 int main()
 {
-	int p = 10;
-
-	ft_printf("%d\n", p);
+	ft_printf("%*.4s--  --%.4s-\n", 10, "abcde", "abcdefg");
 	return (0);
 }
