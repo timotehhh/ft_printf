@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 19:04:54 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 21:44:47 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/29 08:34:01 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int				ft_find_size(unsigned int nb)
 	int i;
 
 	i = 0;
+	if (nb == 0)
+		return (1);
 	while (nb)
 	{
 		nb = nb / 10;

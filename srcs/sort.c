@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/28 22:19:24 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/29 10:37:21 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void	ft_sort_result(va_list arg, t_infos tab)
 {
 	if (tab.str[*(tab.i)] == 'c' || tab.str[*(tab.i)] == '%')
 		ft_print_c(arg, tab);
-	if (tab.str[*(tab.i)] == 's')
+	else if (tab.str[*(tab.i)] == 's')
 		ft_print_s(arg, tab);
-	if (tab.str[*(tab.i)] == 'd' || tab.str[*(tab.i)] == 'i'
+	else if (tab.str[*(tab.i)] == 'd' || tab.str[*(tab.i)] == 'i'
 			|| tab.str[*(tab.i)] == 'x' || tab.str[*(tab.i)] == 'X'
 			|| tab.str[*(tab.i)] == 'u' || tab.str[*(tab.i)] == 'p')
 		ft_print_int(arg, tab);

@@ -6,13 +6,13 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:03:48 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/27 21:42:49 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/29 10:18:47 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	ft_find_size(int nb)
+static int	ft_find_size(long nb)
 {
 	int i;
 
@@ -32,7 +32,7 @@ static int	ft_find_size(int nb)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(int n, int m)
 {
 	int		i;
 	int		stop;
@@ -40,6 +40,8 @@ char		*ft_itoa(int n)
 	char	*result;
 
 	nb = n;
+	if (m)
+		nb = nb * (-1);
 	stop = 0;
 	i = ft_find_size(nb);
 	if (!(result = malloc(sizeof(char) * i + 1)))

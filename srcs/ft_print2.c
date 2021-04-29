@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 20:32:17 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/28 22:34:01 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/29 10:20:08 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,32 @@ char	*ft_initialize_print(va_list arg, t_infos tab)
 	int				n;
 
 	n = 0;
-	if (*(tab.flag) != 'p' && *(tab.flag) != 'u')
+	nb = NULL;
+	if (*(tab.flag) == 'd' || *(tab.flag) == 'i')
 	{
 		if ((n = va_arg(arg, int)) < 0)
 		{
 			*(tab.neg) = 1;
-			n = n * (-1);
+			if (n != -2147483648)
+				n = n * (-1);
+			else
+			{
+				nb = ft_itoa(n, 1);
+			}
 		}
 	}
-	if (*(tab.flag) == 'd' || *(tab.flag) == 'i')
-		nb = ft_itoa(n);
+	if (*(tab.flag) == 'p' || *(tab.flag) == 'x' || *(tab.flag) == 'X')
+		un = va_arg(arg, unsigned long);
+	if ((*(tab.flag) == 'd' || *(tab.flag) == 'i') && nb == NULL)
+		nb = ft_itoa(n, 0);
 	else if (*(tab.flag) == 'x')
-		nb = ft_convert_base(n, "0123456789abcdef", tab);
+		nb = ft_convert_base(un, "0123456789abcdef", tab);
 	else if (*(tab.flag) == 'X')
-		nb = ft_convert_base(n, "0123456789ABCDEF", tab);
+		nb = ft_convert_base(un, "0123456789ABCDEF", tab);
 	else if (*(tab.flag) == 'u')
 		nb = ft_uitoa(va_arg(arg, unsigned int));
-	else
-	{
-		un = (unsigned long)va_arg(arg, void *);
+	else if (*(tab.flag) == 'p')
 		nb = ft_convert_base(un, "0123456789abcdef", tab);
-	}
 	return (nb);
 }
 
