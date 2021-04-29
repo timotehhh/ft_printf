@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 10:10:11 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/29 10:37:41 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/29 11:30:03 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_parcour(va_list arg, t_infos tab)
 		}
 		else
 		{
-			ft_putchar_fd(tab.str[*(tab.i)], 1);
+			ft_putchar_fd(tab.str[*(tab.i)], 1, tab);
 			*(tab.i) = *(tab.i) + 1;
 		}
 	}
@@ -54,6 +54,10 @@ t_infos	ft_initialize(void)
 	if (tab.flag == NULL)
 		tab.null = 1;
 	*(tab.flag) = 'w';
+	tab.retvalue = malloc(sizeof(int) * 1);
+	if (tab.retvalue == NULL)
+		tab.null = 1;
+	*(tab.retvalue) = 0;
 	tab.str = NULL;
 	tab.str_toprint = NULL;
 	return (tab);
@@ -63,6 +67,7 @@ int		ft_printf(const char *format, ...)
 {
 	va_list	arg;
 	t_infos	tab;
+	int		i;
 
 	tab = ft_initialize();
 	tab.str = ft_strdup(format);
@@ -71,9 +76,10 @@ int		ft_printf(const char *format, ...)
 	va_start(arg, format);
 	ft_parcour(arg, tab);
 	va_end(arg);
+	i = *(tab.retvalue);
 	free(tab.i);
 	free(tab.flag);
 	free(tab.str);
 	free(tab.str_toprint);
-	return (1);
+	return (i);
 }

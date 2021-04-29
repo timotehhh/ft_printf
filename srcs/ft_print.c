@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/29 10:36:53 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/29 11:32:17 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,25 @@ void	ft_print_c(va_list arg, t_infos tab)
 	if (tab.minus)
 	{
 		*(tab.i) = *(tab.i) + 1;
-		ft_putchar_fd(c, 1);
+		ft_putchar_fd(c, 1, tab);
 	}
 	while (tab.spaces > 1 || tab.zeros > 1)
 	{
 		if (tab.zeros > 1 && c == '%')
 		{
-			ft_putchar_fd('0', 1);
+			ft_putchar_fd('0', 1, tab);
 			tab.zeros = tab.zeros - 1;
 		}
 		else
 		{
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(' ', 1, tab);
 			tab.spaces = tab.spaces - 1;
 		}
 	}
 	if (!(tab.minus))
 	{
 		*(tab.i) = *(tab.i) + 1;
-		ft_putchar_fd(c, 1);
+		ft_putchar_fd(c, 1, tab);
 	}
 }
 
@@ -59,17 +59,17 @@ void	ft_print_s(va_list arg, t_infos tab)
 	if (tab.minus)
 	{
 		*(tab.i) = *(tab.i) + 1;
-		ft_putstr_fd(tab.str_toprint, 1);
+		ft_putstr_fd(tab.str_toprint, 1, tab);
 	}
 	while (tab.spaces > ft_strlen(tab.str_toprint))
 	{
-		ft_putchar_fd(' ', 1);
+		ft_putchar_fd(' ', 1, tab);
 		tab.spaces = tab.spaces - 1;
 	}
 	if (!(tab.minus))
 	{
 		*(tab.i) = *(tab.i) + 1;
-		ft_putstr_fd(tab.str_toprint, 1);
+		ft_putstr_fd(tab.str_toprint, 1, tab);
 	}
 	free(tab.str_toprint);
 }
@@ -93,11 +93,11 @@ void	ft_print_int(va_list arg, t_infos tab)
 	if (tab.minus && !(tab.point))
 	{
 		if (*(tab.neg))
-			ft_putchar_fd('-', 1);
-		ft_putstr_fd(nb, 1);
+			ft_putchar_fd('-', 1, tab);
+		ft_putstr_fd(nb, 1, tab);
 		while (tab.spaces > (ft_strlen(nb) + *(tab.neg)))
 		{
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(' ', 1, tab);
 			tab.spaces = tab.spaces - 1;
 		}
 	}
@@ -118,16 +118,16 @@ void	ft_print_int2(t_infos tab, char *nb)
 		else
 			tab.spaces = tab.spaces - ft_strlen(nb) - *(tab.neg);
 		if (*(tab.neg))
-			ft_putchar_fd('-', 1);
+			ft_putchar_fd('-', 1, tab);
 		while (tab.printchar > ft_strlen(nb))
 		{
-			ft_putchar_fd('0', 1);
+			ft_putchar_fd('0', 1, tab);
 			tab.printchar = tab.printchar - 1;
 		}
-		ft_putstr_fd(nb, 1);
+		ft_putstr_fd(nb, 1, tab);
 		while (tab.spaces > 0)
 		{
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(' ', 1, tab);
 			tab.spaces = tab.spaces - 1;
 		}
 	}
