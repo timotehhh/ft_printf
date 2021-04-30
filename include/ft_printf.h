@@ -6,17 +6,16 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:56:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 20:26:01 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/30 21:39:08 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIB_H
-# define FT_LIB_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct		s_infos
 {
@@ -59,10 +58,12 @@ char				*ft_convert_base(unsigned long nb, char *base, t_infos tab);
 int					ft_find_len(unsigned long nb, char *base, t_infos tab);
 int					ft_fill_p(char *result);
 char				*ft_initialize_print(va_list arg, t_infos tab);
+char				*ip2(va_list arg, char *nb, unsigned long un, t_infos tab);
 void				ft_print_int3(t_infos tab, char *nb);
 void				ft_print_int4(t_infos tab, char *nb);
 void				ft_print_int5(char *nb, t_infos tab);
 void				ft_print_int6(char *nb, t_infos tab);
+void				ft_print_int7(t_infos tab, char *nb);
 void				ft_print_s2(t_infos tab);
 void				ft_print_c2(char c, t_infos tab);
 

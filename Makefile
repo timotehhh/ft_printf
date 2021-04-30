@@ -1,4 +1,4 @@
-SRCS	=	libft/ft_isdigit.c libft/ft_itoa.c libft/ft_putchar_fd.c libft/ft_putstr_fd.c libft/ft_strlen.c libft/ft_strdup.c srcs/convert_base.c srcs/ft_print.c srcs/ft_print2.c srcs/itoas.c srcs/sort.c ft_printf.c
+SRCS	=	libft/ft_isdigit.c libft/ft_itoa.c libft/ft_putchar_fd.c libft/ft_putstr_fd.c libft/ft_strlen.c libft/ft_strdup.c srcs/ft_print3.c srcs/convert_base.c srcs/ft_print.c srcs/ft_print2.c srcs/itoas.c srcs/sort.c ft_printf.c
 
 CC		= gcc
 

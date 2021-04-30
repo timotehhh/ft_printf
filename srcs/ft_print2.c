@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 20:32:17 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/29 11:23:55 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/30 21:40:22 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ char	*ft_initialize_print(va_list arg, t_infos tab)
 			if (n != -2147483648)
 				n = n * (-1);
 			else
-			{
 				nb = ft_itoa(n, 1);
-			}
 		}
 	}
 	if (*(tab.flag) == 'p' || *(tab.flag) == 'x' || *(tab.flag) == 'X')
 		un = va_arg(arg, unsigned long);
 	if ((*(tab.flag) == 'd' || *(tab.flag) == 'i') && nb == NULL)
 		nb = ft_itoa(n, 0);
-	else if (*(tab.flag) == 'x')
+	else
+		nb = ip2(arg, nb, un, tab);
+	return (nb);
+}
+
+char	*ip2(va_list arg, char *nb, unsigned long un, t_infos tab)
+{
+	if (*(tab.flag) == 'x')
 		nb = ft_convert_base(un, "0123456789abcdef", tab);
 	else if (*(tab.flag) == 'X')
 		nb = ft_convert_base(un, "0123456789ABCDEF", tab);
@@ -73,11 +78,14 @@ void	ft_print_int3(t_infos tab, char *nb)
 		ft_putstr_fd(nb, 1, tab);
 	}
 	else
-	{
-		if (*(tab.neg))
-			ft_putchar_fd('-', 1, tab);
-		ft_putstr_fd(nb, 1, tab);
-	}
+		ft_print_int7(tab, nb);
+}
+
+void	ft_print_int7(t_infos tab, char *nb)
+{
+	if (*(tab.neg))
+		ft_putchar_fd('-', 1, tab);
+	ft_putstr_fd(nb, 1, tab);
 }
 
 void	ft_print_int4(t_infos tab, char *nb)
