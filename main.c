@@ -3,6 +3,10 @@
 
 int main()
 {
-	ft_printf("%%d-\n");
+	int a = 2;
+
+	printf("%-10.5p-\n", &a);
+	printf("%10.5p-\n", &a);
+	printf("%05p-\n", &a);
 	return (0);
 }

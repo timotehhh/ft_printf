@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/29 11:32:17 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/30 18:20:09 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_print_c(va_list arg, t_infos tab)
 		*(tab.i) = *(tab.i) + 1;
 		ft_putchar_fd(c, 1, tab);
 	}
-	while (tab.spaces > 1 || tab.zeros > 1)
+	while (tab.spaces > 1 || (tab.zeros > 1 && c == '%'))
 	{
 		if (tab.zeros > 1 && c == '%')
 		{
@@ -86,8 +86,13 @@ void	ft_print_int(va_list arg, t_infos tab)
 		tab.spaces = tab.spaces * (-1);
 		tab.minus = 1;
 	}
-	if (*(tab.flag) != 'p' && tab.point && !(tab.printchar) && nb[0] == '0')
-		nb[0] = '\0';
+	if (tab.point && !(tab.printchar) && nb[0] == '0')
+	{
+		if (*(tab.flag) == 'p')
+			nb[2] = '\0';
+		else
+			nb[0] = '\0';
+	}
 	if (tab.zero && (tab.minus || tab.point) && !(tab.spaces))
 		tab.spaces = tab.zeros;
 	if (tab.minus && !(tab.point))
