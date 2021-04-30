@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:56:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 19:16:21 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/30 20:26:01 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void				ft_print_int2(t_infos tab, char *nb);
 void				ft_print_s(va_list arg, t_infos tab);
 void				ft_print_c(va_list arg, t_infos tab);
 void				ft_sort(va_list arg, t_infos tab);
-void				ft_nbsort(va_list arg, t_infos tab);
+void				ft_nbsort(va_list arg, t_infos tab, int j);
 void				ft_nbend(va_list arg, t_infos tab, int nb, int nbrlen);
 void				ft_sort_result(va_list arg, t_infos tab);
 char				*ft_uitoa(unsigned int nb);

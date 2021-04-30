@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 19:23:21 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/30 20:29:15 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_sort(va_list arg, t_infos tab)
 {
 	if (ft_isdigit(tab.str[*(tab.i)]) && tab.str[*(tab.i)] != '0')
-		ft_nbsort(arg, tab);
+		ft_nbsort(arg, tab, 0);
 	else if ((tab.str[*(tab.i)] == '0' || tab.str[*(tab.i)] == '.'
 				|| tab.str[*(tab.i)] == '*' || tab.str[*(tab.i)] == '-')
 			&& *(tab.flag) == 'w')
@@ -27,7 +27,7 @@ void	ft_sort(va_list arg, t_infos tab)
 		else if (tab.str[*(tab.i)] == '-')
 			tab.minus = 1;
 		*(tab.i) = *(tab.i) + 1;
-		ft_nbsort(arg, tab);
+		ft_nbsort(arg, tab, 0);
 	}
 	else if ((tab.str[*(tab.i)] == 'p' || tab.str[*(tab.i)] == 'd'
 			|| tab.str[*(tab.i)] == 'c' || tab.str[*(tab.i)] == 'X'
@@ -40,7 +40,7 @@ void	ft_sort(va_list arg, t_infos tab)
 	}
 }
 
-void	ft_nbsort(va_list arg, t_infos tab)
+void	ft_nbsort(va_list arg, t_infos tab, int j)
 {
 	char			*nbr;
 	unsigned int	nb;
@@ -56,14 +56,13 @@ void	ft_nbsort(va_list arg, t_infos tab)
 	nbr = malloc(sizeof(char) * (i + 1));
 	if (nbr == NULL)
 		return ;
-	i = 0;
 	while (ft_isdigit(tab.str[*(tab.i)]))
 	{
-		nbr[i] = tab.str[*(tab.i)];
+		nbr[j] = tab.str[*(tab.i)];
 		*(tab.i) = *(tab.i) + 1;
-		i++;
+		j++;
 	}
-	nbr[i] = '\0';
+	nbr[j] = '\0';
 	nb = ft_uatoi(nbr);
 	i = ft_strlen(nbr);
 	free(nbr);
