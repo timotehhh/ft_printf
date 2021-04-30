@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:56:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/29 11:28:48 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/30 19:16:21 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,9 @@ int					ft_fill_p(char *result);
 char				*ft_initialize_print(va_list arg, t_infos tab);
 void				ft_print_int3(t_infos tab, char *nb);
 void				ft_print_int4(t_infos tab, char *nb);
+void				ft_print_int5(char *nb, t_infos tab);
+void				ft_print_int6(char *nb, t_infos tab);
+void				ft_print_s2(t_infos tab);
+void				ft_print_c2(char c, t_infos tab);
 
 #endif

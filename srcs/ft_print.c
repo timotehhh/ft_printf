@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 18:20:09 by trouger          ###   ########.fr       */
+/*   Updated: 2021/04/30 19:16:28 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_print_c(va_list arg, t_infos tab)
 {
 	char	c;
+
 	if (*(tab.flag) == 'c')
 		c = va_arg(arg, int);
 	else
@@ -24,6 +25,16 @@ void	ft_print_c(va_list arg, t_infos tab)
 		*(tab.i) = *(tab.i) + 1;
 		ft_putchar_fd(c, 1, tab);
 	}
+	ft_print_c2(c, tab);
+	if (!(tab.minus))
+	{
+		*(tab.i) = *(tab.i) + 1;
+		ft_putchar_fd(c, 1, tab);
+	}
+}
+
+void	ft_print_c2(char c, t_infos tab)
+{
 	while (tab.spaces > 1 || (tab.zeros > 1 && c == '%'))
 	{
 		if (tab.zeros > 1 && c == '%')
@@ -36,11 +47,6 @@ void	ft_print_c(va_list arg, t_infos tab)
 			ft_putchar_fd(' ', 1, tab);
 			tab.spaces = tab.spaces - 1;
 		}
-	}
-	if (!(tab.minus))
-	{
-		*(tab.i) = *(tab.i) + 1;
-		ft_putchar_fd(c, 1, tab);
 	}
 }
 
@@ -56,6 +62,12 @@ void	ft_print_s(va_list arg, t_infos tab)
 		tab.str_toprint = ft_strdup("(null)");
 	if (tab.point)
 		tab.str_toprint[tab.printchar] = '\0';
+	ft_print_s2(tab);
+	free(tab.str_toprint);
+}
+
+void	ft_print_s2(t_infos tab)
+{
 	if (tab.minus)
 	{
 		*(tab.i) = *(tab.i) + 1;
@@ -71,7 +83,6 @@ void	ft_print_s(va_list arg, t_infos tab)
 		*(tab.i) = *(tab.i) + 1;
 		ft_putstr_fd(tab.str_toprint, 1, tab);
 	}
-	free(tab.str_toprint);
 }
 
 void	ft_print_int(va_list arg, t_infos tab)
@@ -87,31 +98,37 @@ void	ft_print_int(va_list arg, t_infos tab)
 		tab.minus = 1;
 	}
 	if (tab.point && !(tab.printchar) && nb[0] == '0')
-	{
-		if (*(tab.flag) == 'p')
-			nb[2] = '\0';
-		else
-			nb[0] = '\0';
-	}
+		ft_print_int6(nb, tab);
 	if (tab.zero && (tab.minus || tab.point) && !(tab.spaces))
 		tab.spaces = tab.zeros;
 	if (tab.minus && !(tab.point))
-	{
-		if (*(tab.neg))
-			ft_putchar_fd('-', 1, tab);
-		ft_putstr_fd(nb, 1, tab);
-		while (tab.spaces > (ft_strlen(nb) + *(tab.neg)))
-		{
-			ft_putchar_fd(' ', 1, tab);
-			tab.spaces = tab.spaces - 1;
-		}
-	}
+		ft_print_int5(nb, tab);
 	else if (tab.point)
 		ft_print_int2(tab, nb);
 	else
 		ft_print_int3(tab, nb);
 	*(tab.i) += 1;
 	free(nb);
+}
+
+void	ft_print_int6(char *nb, t_infos tab)
+{
+	if (*(tab.flag) == 'p')
+		nb[2] = '\0';
+	else
+		nb[0] = '\0';
+}
+
+void	ft_print_int5(char *nb, t_infos tab)
+{
+	if (*(tab.neg))
+		ft_putchar_fd('-', 1, tab);
+	ft_putstr_fd(nb, 1, tab);
+	while (tab.spaces > (ft_strlen(nb) + *(tab.neg)))
+	{
+		ft_putchar_fd(' ', 1, tab);
+		tab.spaces = tab.spaces - 1;
+	}
 }
 
 void	ft_print_int2(t_infos tab, char *nb)
