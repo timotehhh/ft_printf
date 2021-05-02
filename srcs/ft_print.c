@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 21:35:58 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/02 18:00:42 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ void	ft_print_c(va_list arg, t_infos tab)
 {
 	char	c;
 
+	if (tab.spaces < 0 || tab.zeros < 0)
+	{
+		if (tab.zeros < 0)
+			tab.spaces = tab.zeros;
+		tab.spaces = tab.spaces * (-1);
+		tab.minus = 1;
+	}
 	if (*(tab.flag) == 'c')
 		c = va_arg(arg, int);
 	else
