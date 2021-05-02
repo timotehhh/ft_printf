@@ -72,6 +72,8 @@ int		ft_printf(const char *format, ...)
 	va_end(arg);
 	i = *(tab.retvalue);
 	free(tab.i);
+	free(tab.retvalue);
+	free(tab.neg);
 	free(tab.flag);
 	free(tab.str);
 	free(tab.str_toprint);
