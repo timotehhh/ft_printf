@@ -1,10 +1,11 @@
 
 #include "./include/ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int main()
 {
-	ft_printf(" 0*%-0*.10d*0 0*%-0*.0d*0 \n", 21, 1021, 21, -1011);
-	printf(" 0*%-0*.10d*0 0*%-0*.0d*0 \n", 21, 1021, 21, -1011);
+	ft_printf(" *%-*.*x* *%*.*x* \n", 6, 2, 102, 10, 21, -101);
+	printf(" *%-*.*x* *%*.*x* \n", 6, 2, 102, 10, 21, -101);
 	return (0);
 }

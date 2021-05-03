@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 20:29:15 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/03 18:18:16 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_nbsort(va_list arg, t_infos tab, int j)
 	i = *(tab.i);
 	if (tab.str[*(tab.i) - 1] == '*')
 		ft_nbend(arg, tab, va_arg(arg, int), 1);
-	if (!(ft_isdigit(tab.str[*(tab.i)])))
+	if (!(ft_isdigit(tab.str[*(tab.i)])) || tab.str[*(tab.i)] == '0')
 		ft_sort(arg, tab);
 	while (ft_isdigit(tab.str[i]))
 		i++;

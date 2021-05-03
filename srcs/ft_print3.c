@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 21:34:54 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/03 18:44:24 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_print_int2(t_infos tab, char *nb)
 {
 	if (tab.minus)
 	{
-		if ((ft_strlen(nb) + *(tab.neg)) < tab.printchar)
+		if ((ft_strlen(nb) + *(tab.neg)) <= tab.printchar)
 			tab.spaces = tab.spaces - tab.printchar - *(tab.neg);
 		else
 			tab.spaces = tab.spaces - ft_strlen(nb) - *(tab.neg);
