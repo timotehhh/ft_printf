@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/05/03 18:44:24 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/05 17:35:25 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_print_int6(char *nb, t_infos tab)
 {
-	if (*(tab.flag) == 'p')
+	if (*(tab.flag) == 'p' && nb[2] == '0')
 		nb[2] = '\0';
 	else
 		nb[0] = '\0';

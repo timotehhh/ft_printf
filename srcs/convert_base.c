@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:49:38 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/29 08:55:33 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/05 17:28:49 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*ft_convert_base(unsigned long nb, char *base, t_infos tab)
 	result[i] = '\0';
 	if (*(tab.flag) == 'p')
 		stop = ft_fill_p(result);
+//	if (*(tab.flag) == 'p' && tab.point && !(tab.printchar))
+//		return (result);
 	while (--i >= stop)
 	{
 		result[i] = base[nb % ft_strlen(base)];
