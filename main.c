@@ -4,12 +4,7 @@
 
 int main()
 {
-	int *p;
-	int i;
-
-	i = 9;
-	p = NULL;
-	ft_printf(">>%-10.p<<\n", p);
-	printf(">>%-10.p<<\n", p);
+	ft_printf(">>%.*s<<\n", -10, "abc");
+	printf(">>%.*s<<\n", -10 , "abc");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/05/05 17:34:59 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/05 21:23:40 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_print_s(va_list arg, t_infos tab)
 	}
 	if (tab.str_toprint == NULL)
 		tab.str_toprint = ft_strdup("(null)");
-	if (tab.point)
+	if (tab.point && tab.printchar >= 0)
 		tab.str_toprint[tab.printchar] = '\0';
 	ft_print_s2(tab);
 	free(tab.str_toprint);

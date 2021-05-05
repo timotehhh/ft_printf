@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 10:10:11 by trouger           #+#    #+#             */
-/*   Updated: 2021/04/30 18:50:06 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/05 21:20:40 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_parcour(va_list arg, t_infos tab)
 			*(tab.i) = *(tab.i) + 1;
 			ft_sort(arg, tab);
 			*(tab.flag) = 'w';
+			*(tab.neg) = 0;
 		}
 		else
 		{
