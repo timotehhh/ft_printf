@@ -104,8 +104,14 @@ void	ft_print_int(va_list arg, t_infos tab)
 		tab.spaces = tab.spaces * (-1);
 		tab.minus = 1;
 	}
-	if (tab.zeros > 0 && tab.minus && tab.spaces == 0)
+	if (tab.zeros > 0 && tab.minus && tab.spaces == 0 && tab.printchar >= 0)
 		tab.spaces = tab.zeros;
+	if (tab.printchar < 0 && tab.zeros)
+	{
+		tab.printchar = tab.zeros;
+		if (*(tab.neg))
+			tab.printchar = tab.printchar - 1;
+	}
 	if (tab.point && !(tab.printchar) && nb[0] == '0')
 		ft_print_int6(nb, tab);
 	if (tab.zero && (tab.minus || tab.point) && !(tab.spaces))
