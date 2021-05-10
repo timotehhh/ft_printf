@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 16:34:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/05/05 17:35:25 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/10 18:47:09 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,18 @@ void	ft_print_int2(t_infos tab, char *nb)
 	}
 	else
 		ft_print_int4(tab, nb);
+}
+
+t_infos	ft_print_int7(t_infos tab)
+{
+	if (tab.spaces < 0 || tab.zeros < 0)
+	{
+		if (tab.zeros < 0)
+			tab.spaces = tab.zeros;
+		tab.spaces = tab.spaces * (-1);
+		tab.minus = 1;
+	}
+	if (tab.zeros > 0 && tab.minus && tab.spaces == 0 && tab.printchar >= 0)
+		tab.spaces = tab.zeros;
+	//continuer de copier le début de ft_print_int
 }

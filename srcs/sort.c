@@ -6,11 +6,12 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:14:46 by trouger           #+#    #+#             */
-/*   Updated: 2021/05/04 20:39:57 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/10 17:42:49 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+#include <stdio.h>
 
 void	ft_sort(va_list arg, t_infos tab)
 {

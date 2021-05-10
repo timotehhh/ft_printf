@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 20:32:17 by trouger           #+#    #+#             */
-/*   Updated: 2021/05/03 18:51:37 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/10 18:42:29 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ char	*ft_initialize_print(va_list arg, t_infos tab)
 
 	n = 0;
 	nb = NULL;
-	if (*(tab.flag) == 'd' || *(tab.flag) == 'i')
+	if ((*(tab.flag) == 'd' || *(tab.flag) == 'i')
+			&& (n = va_arg(arg, int)) < 0)
 	{
-		if ((n = va_arg(arg, int)) < 0)
-		{
-			*(tab.neg) = 1;
-			if (n != -2147483648)
-				n = n * (-1);
-			else
-				nb = ft_itoa(n, 1);
-		}
+		*(tab.neg) = 1;
+		if (n != -2147483648)
+			n = n * (-1);
+		else
+			nb = ft_itoa(n, 1);
 	}
-	if (*(tab.flag) == 'p' || *(tab.flag) == 'x' || *(tab.flag) == 'X')
+	if (*(tab.flag) == 'x' || *(tab.flag) == 'X')
+		un = va_arg(arg, unsigned int);
+	if (*(tab.flag) == 'p')
 		un = va_arg(arg, unsigned long);
 	if ((*(tab.flag) == 'd' || *(tab.flag) == 'i') && nb == NULL)
 		nb = ft_itoa(n, 0);
