@@ -6,7 +6,7 @@
 /*   By: trouger <trouger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 12:56:47 by trouger           #+#    #+#             */
-/*   Updated: 2021/05/10 18:36:43 by trouger          ###   ########.fr       */
+/*   Updated: 2021/05/10 20:41:39 by trouger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_infos
 	char			*str_toprint;
 }					t_infos;
 
+t_infos				ft_print_int8(t_infos tab);
 char				*ft_itoa(int n, int m);
 int					ft_isdigit(int c);
 void				ft_putchar_fd(char c, int fd, t_infos tab);
